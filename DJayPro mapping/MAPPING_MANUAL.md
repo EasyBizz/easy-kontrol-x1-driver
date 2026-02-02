@@ -36,7 +36,7 @@ This manual is generated from `DJayPro mapping/EASY KONTROL X1 1.djayMidiMapping
 
 | Control | Type | Normal (Ch 1) | Shift (Ch 2) |
 |---|---|---|---|
-| STRIP | Knob | Selected Deck: Toggle | turntable2 |
+| STRIP | Knob | turntable2 | turntable2 |
 
 ## Deck A
 
@@ -50,9 +50,9 @@ This manual is generated from `DJayPro mapping/EASY KONTROL X1 1.djayMidiMapping
 | DECK_A_ENCODER_LOOP | Encoder | Deck A Loop Size | Deck A Loop Move |
 | DECK_A_BUTTON_LOOP | Hold | Deck A Loop On/Off | Deck A Loop In/Out |
 | DECK_A_BUTTON_CUE | Hold | Deck A Cue (Go to start) | Deck A Set Cue |
-| DECK_A_BUTTON_FLUX | Hold | Deck A Tap BPM | — |
+| DECK_A_BUTTON_FLUX | Hold | Deck A Tap BPM | turntable2 |
 | DECK_A_BUTTON_PLAY | Hold | Deck A Play/Pause | — |
-| DECK_A_BUTTON_SYNC | Hold | Deck A Sync | — |
+| DECK_A_BUTTON_SYNC | Hold | Deck A Sync | turntable2 |
 
 ## Deck B
 
@@ -64,9 +64,9 @@ This manual is generated from `DJayPro mapping/EASY KONTROL X1 1.djayMidiMapping
 | DECK_B_ENCODER_LOOP | Encoder | Deck B Loop Size | Deck B Loop Move |
 | DECK_B_BUTTON_LOOP | Hold | Deck B Loop On/Off | Deck B Loop In/Out |
 | DECK_B_BUTTON_CUE | Hold | Deck B Cue (Go to start) | Deck B Set Cue |
-| DECK_B_BUTTON_FLUX | Hold | Deck B Tap BPM | — |
+| DECK_B_BUTTON_FLUX | Hold | Deck B Tap BPM | turntable2 |
 | DECK_B_BUTTON_PLAY | Hold | Deck B Play/Pause | — |
-| DECK_B_BUTTON_SYNC | Hold | Deck B Sync | — |
+| DECK_B_BUTTON_SYNC | Hold | Deck B Sync | turntable2 |
 
 ## Hotcues
 
@@ -80,9 +80,3 @@ This manual is generated from `DJayPro mapping/EASY KONTROL X1 1.djayMidiMapping
 | DECK_B_HOTCUE_2 | Hold | Deck B Hotcue 2 (jump/play) | Deck B Hotcue 2 (set) |
 | DECK_B_HOTCUE_3 | Hold | Deck B Hotcue 3 (jump/play) | Deck B Hotcue 3 (set) |
 | DECK_B_HOTCUE_4 | Hold | Deck B Hotcue 4 (jump/play) | Deck B Hotcue 4 (set) |
-
-## Unassigned/Utility
-
-| Control | Type | Normal (Ch 1) | Shift (Ch 2) |
-|---|---|---|---|
-| CC76 (midiData=76) |  | — | Library (open/focus) |
