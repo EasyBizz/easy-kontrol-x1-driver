@@ -1,6 +1,6 @@
 # Easy KONTROL X1 Driver
 
-Easy KONTROL X1 Driver converts Native Instruments KONTROL X1 USB events to MIDI on macOS.
+Easy KONTROL X1 Driver converts Native Instruments KONTROL X1 (mk2) USB events to MIDI on macOS.
 
 ## Install (macOS)
 
