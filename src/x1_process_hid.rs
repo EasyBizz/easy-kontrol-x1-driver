@@ -1,5 +1,6 @@
 use midir::{MidiInput, MidiInputConnection, MidiOutput, MidiOutputConnection};
 use midir::os::unix::{VirtualInput, VirtualOutput};
+use std::collections::HashSet;
 use std::sync::mpsc;
 
 use crate::conf::YamlConfig;
@@ -40,6 +41,7 @@ pub struct X1mk1Hid {
     led_bank80: [u8; 51],
     led_bank81: [u8; 90],
     led_map: std::collections::HashMap<u8, u8>,
+    hotcue_leds: HashSet<u8>,
     led_report_id: u8,
     led_test: bool,
     led_test_idx: u8,
@@ -72,11 +74,15 @@ impl X1mk1Hid {
         println!("✓ Created virtual MIDI output port: {}", MIDI_PORT_NAME);
         let board = X1mk1Board::from_yaml(&yaml_config);
         let mut led_map = std::collections::HashMap::new();
+        let mut hotcue_leds = HashSet::new();
         let mut shift_led_idx: Option<u8> = None;
-        for (_name, button_type) in &board.buttons {
+        for (name, button_type) in &board.buttons {
             match button_type {
                 ButtonType::Toggle(b) | ButtonType::Hold(b) | ButtonType::Hotcue(b) => {
                     led_map.insert(b.midi_ctrl_ch, b.write_idx);
+                    if name.starts_with("DECK_A_HOTCUE") || name.starts_with("DECK_B_HOTCUE") {
+                        hotcue_leds.insert(b.write_idx);
+                    }
                 }
                 _ => {}
             }
@@ -125,6 +131,7 @@ impl X1mk1Hid {
             led_bank80: [0; 51],
             led_bank81: [0; 90],
             led_map,
+            hotcue_leds,
             led_report_id: 0,
             led_test,
             led_test_idx: 0,
@@ -316,9 +323,23 @@ impl X1mk1Hid {
                             self.set_led_idx(i as u8, v);
                         }
                         0xB0 => {
-                            // CC: default to LED on/off
-                            let v = if val == 0 { LED_DIM } else { LED_BRIGHT };
-                            self.set_led_idx(i as u8, v);
+                            if self.hotcue_leds.contains(&(i as u8)) {
+                                let (r, g, b) = Self::hotcue_rgb_from_val(val);
+                                let base = i as i32;
+                                let red = base - 2;
+                                let green = base - 1;
+                                if red >= 0 {
+                                    self.set_led_idx(red as u8, r);
+                                }
+                                if green >= 0 {
+                                    self.set_led_idx(green as u8, g);
+                                }
+                                self.set_led_idx(base as u8, b);
+                            } else {
+                                // CC: default to LED on/off
+                                let v = if val == 0 { LED_DIM } else { LED_BRIGHT };
+                                self.set_led_idx(i as u8, v);
+                            }
                         }
                         _ => {
                             if status == MIDI_CHANNEL_LED {
@@ -905,6 +926,21 @@ impl X1mk1Hid {
 
         if !ok && self.led_report_id == 0 {
             self.led_report_id = 1;
+        }
+    }
+
+    fn hotcue_rgb_from_val(val: u8) -> (u8, u8, u8) {
+        if val == 0 {
+            return (LED_DIM, LED_DIM, LED_DIM);
+        }
+        match val {
+            10 => (LED_BRIGHT, LED_DIM, LED_DIM),       // Red
+            20 => (LED_BRIGHT, 0x30, LED_DIM),          // Orange (red + dim green)
+            30 => (LED_BRIGHT, LED_BRIGHT, LED_DIM),    // Yellow
+            40 => (LED_DIM, LED_BRIGHT, LED_DIM),       // Green
+            50 => (LED_DIM, LED_DIM, LED_BRIGHT),       // Blue
+            60 => (LED_BRIGHT, LED_BRIGHT, LED_BRIGHT), // White
+            _ => (LED_DIM, LED_DIM, LED_BRIGHT),        // Default to blue
         }
     }
 }
