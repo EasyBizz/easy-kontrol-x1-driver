@@ -184,6 +184,10 @@ impl X1mk1Hid {
         }
     }
 
+    fn use_shift_for_cc(cc: u8) -> bool {
+        !matches!(cc, 0..=7 | 8..=15 | 20..=23)
+    }
+
     fn set_led_idx(&mut self, idx: u8, val: u8) {
         let i = idx as usize;
         if self.led_bank == 0x80 {
@@ -556,10 +560,14 @@ impl X1mk1Hid {
                             eprintln!("[BUTTON] {} {} -> CC {}", ctrl_name, kind, cc);
                             let status = if is_play || is_shift {
                                 MIDI_CHANNEL
-                            } else {
+                            } else if Self::use_shift_for_cc(cc) {
                                 MIDI_CHANNEL + self.shift
+                            } else {
+                                MIDI_CHANNEL
                             };
-                            pending_cc.push((status, cc));
+                            if !is_shift {
+                                pending_cc.push((status, cc));
+                            }
                             button_event_bytes[button.read_i as usize] = true;
                         }
                         button.prev = button.curr;
@@ -657,10 +665,14 @@ impl X1mk1Hid {
                             }
                             let status = if is_play || is_shift {
                                 MIDI_CHANNEL
-                            } else {
+                            } else if Self::use_shift_for_cc(cc) {
                                 MIDI_CHANNEL + self.shift
+                            } else {
+                                MIDI_CHANNEL
                             };
-                            pending_cc.push((status, cc));
+                            if !is_shift {
+                                pending_cc.push((status, cc));
+                            }
                             button_event_bytes[button.read_i as usize] = true;
                         }
                         button.prev = button.curr;
@@ -744,8 +756,10 @@ impl X1mk1Hid {
                         let cc = k.midi_ctrl_ch;
                         let status = if Self::fx_alt_cc_for_knob(fx_hold_mask, cc).is_some() {
                             MIDI_CHANNEL_FX_HOLD
-                        } else {
+                        } else if Self::use_shift_for_cc(cc) {
                             MIDI_CHANNEL + shift_active
+                        } else {
+                            MIDI_CHANNEL
                         };
                         let _ = self.midi_conn_out.send(&[status, cc, k.curr]);
                     }

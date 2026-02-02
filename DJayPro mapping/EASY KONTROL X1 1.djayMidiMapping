@@ -450,18 +450,6 @@
 			<key>controlType</key>
 			<string>button</string>
 			<key>keyPath</key>
-			<string>musicLibrary.focusQueue</string>
-			<key>midiChannel</key>
-			<integer>0</integer>
-			<key>midiData</key>
-			<integer>45</integer>
-			<key>midiMessageType</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>controlType</key>
-			<string>button</string>
-			<key>keyPath</key>
 			<string>musicLibrary.load1</string>
 			<key>midiChannel</key>
 			<integer>0</integer>
@@ -717,7 +705,7 @@
 			<key>output</key>
 			<dict>
 				<key>midiMaxValue</key>
-				<real>20</real>
+				<real>20.0</real>
 			</dict>
 		</dict>
 		<dict>
@@ -734,7 +722,7 @@
 			<key>output</key>
 			<dict>
 				<key>midiMaxValue</key>
-				<real>30</real>
+				<real>30.0</real>
 			</dict>
 		</dict>
 		<dict>
@@ -751,7 +739,7 @@
 			<key>output</key>
 			<dict>
 				<key>midiMaxValue</key>
-				<real>40</real>
+				<real>40.0</real>
 			</dict>
 		</dict>
 		<dict>
@@ -768,7 +756,7 @@
 			<key>output</key>
 			<dict>
 				<key>midiMaxValue</key>
-				<real>10</real>
+				<real>10.0</real>
 			</dict>
 		</dict>
 		<dict>
@@ -785,7 +773,7 @@
 			<key>output</key>
 			<dict>
 				<key>midiMaxValue</key>
-				<real>20</real>
+				<real>20.0</real>
 			</dict>
 		</dict>
 		<dict>
@@ -802,7 +790,7 @@
 			<key>output</key>
 			<dict>
 				<key>midiMaxValue</key>
-				<real>30</real>
+				<real>30.0</real>
 			</dict>
 		</dict>
 		<dict>
@@ -819,7 +807,7 @@
 			<key>output</key>
 			<dict>
 				<key>midiMaxValue</key>
-				<real>40</real>
+				<real>40.0</real>
 			</dict>
 		</dict>
 		<dict>
@@ -836,7 +824,7 @@
 			<key>output</key>
 			<dict>
 				<key>midiMaxValue</key>
-				<real>10</real>
+				<real>10.0</real>
 			</dict>
 		</dict>
 		<dict>
@@ -995,7 +983,7 @@
 			<key>midiMessageType</key>
 			<integer>3</integer>
 			<key>rotarySensitivity</key>
-			<real>10</real>
+			<real>10.0</real>
 		</dict>
 		<dict>
 			<key>controlType</key>
@@ -1009,7 +997,7 @@
 			<key>midiMessageType</key>
 			<integer>3</integer>
 			<key>rotarySensitivity</key>
-			<real>10</real>
+			<real>10.0</real>
 		</dict>
 	</array>
 	<key>editor</key>

@@ -7,7 +7,7 @@ Easy KONTROL X1 Driver converts Native Instruments KONTROL X1 (mk2) USB events t
 ### Download (no build)
 
 - Download the latest release zip:
-  - https://github.com/EasyBizz/easy-kontrol-x1-driver/releases/tag/v1.1.3
+- https://github.com/EasyBizz/easy-kontrol-x1-driver/releases/tag/v1.1.4
 - Unzip it, then move **Easy KONTROL X1 Driver.app** to **/Applications**.
 
 ### Build from source
