@@ -935,7 +935,7 @@ impl X1mk1Hid {
         }
         match val {
             10 => (LED_BRIGHT, LED_DIM, LED_DIM),       // Red
-            20 => (LED_BRIGHT, 0x30, LED_DIM),          // Orange (red + dim green)
+            20 => (LED_BRIGHT, 0x50, LED_DIM),          // Orange (red + mid green)
             30 => (LED_BRIGHT, LED_BRIGHT, LED_DIM),    // Yellow
             40 => (LED_DIM, LED_BRIGHT, LED_DIM),       // Green
             50 => (LED_DIM, LED_DIM, LED_BRIGHT),       // Blue
