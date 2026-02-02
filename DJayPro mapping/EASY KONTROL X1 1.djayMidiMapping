@@ -715,7 +715,10 @@
 			<key>midiMessageType</key>
 			<integer>3</integer>
 			<key>output</key>
-			<dict/>
+			<dict>
+				<key>midiMaxValue</key>
+				<real>20</real>
+			</dict>
 		</dict>
 		<dict>
 			<key>controlType</key>
@@ -729,7 +732,10 @@
 			<key>midiMessageType</key>
 			<integer>3</integer>
 			<key>output</key>
-			<dict/>
+			<dict>
+				<key>midiMaxValue</key>
+				<real>30</real>
+			</dict>
 		</dict>
 		<dict>
 			<key>controlType</key>
@@ -743,7 +749,10 @@
 			<key>midiMessageType</key>
 			<integer>3</integer>
 			<key>output</key>
-			<dict/>
+			<dict>
+				<key>midiMaxValue</key>
+				<real>40</real>
+			</dict>
 		</dict>
 		<dict>
 			<key>controlType</key>
@@ -757,7 +766,10 @@
 			<key>midiMessageType</key>
 			<integer>3</integer>
 			<key>output</key>
-			<dict/>
+			<dict>
+				<key>midiMaxValue</key>
+				<real>10</real>
+			</dict>
 		</dict>
 		<dict>
 			<key>controlType</key>
@@ -771,7 +783,10 @@
 			<key>midiMessageType</key>
 			<integer>3</integer>
 			<key>output</key>
-			<dict/>
+			<dict>
+				<key>midiMaxValue</key>
+				<real>20</real>
+			</dict>
 		</dict>
 		<dict>
 			<key>controlType</key>
@@ -785,7 +800,10 @@
 			<key>midiMessageType</key>
 			<integer>3</integer>
 			<key>output</key>
-			<dict/>
+			<dict>
+				<key>midiMaxValue</key>
+				<real>30</real>
+			</dict>
 		</dict>
 		<dict>
 			<key>controlType</key>
@@ -799,7 +817,10 @@
 			<key>midiMessageType</key>
 			<integer>3</integer>
 			<key>output</key>
-			<dict/>
+			<dict>
+				<key>midiMaxValue</key>
+				<real>40</real>
+			</dict>
 		</dict>
 		<dict>
 			<key>controlType</key>
@@ -813,7 +834,10 @@
 			<key>midiMessageType</key>
 			<integer>3</integer>
 			<key>output</key>
-			<dict/>
+			<dict>
+				<key>midiMaxValue</key>
+				<real>10</real>
+			</dict>
 		</dict>
 		<dict>
 			<key>controlType</key>
@@ -963,25 +987,29 @@
 			<key>controlType</key>
 			<string>rotary</string>
 			<key>keyPath</key>
-			<string>turntable1.autoLoopDurationRotary</string>
+			<string>turntable1.loopInPointMoveRotary</string>
 			<key>midiChannel</key>
 			<integer>1</integer>
 			<key>midiData</key>
 			<integer>26</integer>
 			<key>midiMessageType</key>
 			<integer>3</integer>
+			<key>rotarySensitivity</key>
+			<real>10</real>
 		</dict>
 		<dict>
 			<key>controlType</key>
 			<string>rotary</string>
 			<key>keyPath</key>
-			<string>turntable2.autoLoopDurationRotary</string>
+			<string>turntable2.loopInPointMoveRotary</string>
 			<key>midiChannel</key>
 			<integer>1</integer>
 			<key>midiData</key>
 			<integer>27</integer>
 			<key>midiMessageType</key>
 			<integer>3</integer>
+			<key>rotarySensitivity</key>
+			<real>10</real>
 		</dict>
 	</array>
 	<key>editor</key>
